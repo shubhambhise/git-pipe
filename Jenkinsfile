@@ -1,30 +1,19 @@
 pipeline {
+        agent {
+		       label "bilt-in"
+		
+		}
+		
+		stages {
+		
+		         stage ('stage-1') {
+				                     steps {
+									          sh "echo 'this is master'"
+									 
+									 }
+				 
+				 }
+		
+		}
 
-          agent {
-		      label {
-		  
-		         label "built-in"
-				 customWorkspace "/mnt/project/pipeline"
-               } 
-           }
-          stages {
-		     stage ('install-apache') {
-			       steps {
-				    sh "yum install httpd -y"
-				   }
-			 }
-			 stage ('server-start') {
-			        steps {
-					sh "service httpd start"
-					}
-			 }
-			 stage ('deploy-index') {
-			        steps {
-					sh "cp -r index.html /var/www/html/"
-					sh "chmod -R 777 /var/www/html/index.html"
-					}
-			 }
-			 
-			 
-}
 }
