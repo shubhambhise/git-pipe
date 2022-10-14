@@ -2,13 +2,15 @@ pipeline {
            agent {
 		           label {
 				   label "built-in"
+				   customWorkspace '/mnt/test'
 				   }
 		   }
           stages {
 		           stage ('slave') {
 				   agent {
 				          label {
-						       label '172.31.38.10'						  
+						       label '172.31.38.10'	
+                              customWorkspace '/mnt/project'							   
 						  }
 				    }
 				          steps {
